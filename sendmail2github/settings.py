@@ -15,7 +15,7 @@ from sentry_sdk.integrations.django import DjangoIntegration
 from pathlib import Path
 
 sentry_sdk.init(
-    dsn="https://03fa9aa8b73d42eab9a63a28f50713db@o87878.ingest.sentry.io/191402",
+    dsn=os.environ['SENTRY_URL'],
     integrations=[DjangoIntegration()],
     traces_sample_rate=1.0,
     send_default_pii=True
@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-+rvt_a_j#_2qvu46y_^4ph98(bnhh@t9gms3z@9-!i&ej+u52j'
+SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
