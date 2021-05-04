@@ -1,0 +1,30 @@
+ <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Date</th>
+          <th scope="col">Assignees</th>
+          <th scope="col">Labels</th>
+          <th scope="col">Title</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for issue in issues %}
+            <tr>
+                <td>#{{ issue.number }}</td>
+                <td class="text-nowrap">{{ issue.created_at }}</td>
+                <td>
+                    {% for assignee in issue.assignees %}
+                      <img class="avatar rounded-circle" src="{{ assignee.avatar_url }}" title="{{ assignee.name }}" />
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for label in issue.labels %}
+                        <span class="badge badge-pill" style="background-color:#{{ label.color }}">{{ label.name }}</span>
+                    {% endfor %}
+                </td>
+                <td>{{ issue.title }}</td>
+            </tr>
+         {% endfor %}
+      </tbody>
+</table>

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title_page %}Tickets{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="card">
+    <div class="container">
+         <div class="container p-5 rounded">
+            <h2 class="text-center mt-0">{{ repo.full_name }}</h2>
+            <h3 class="text-center mt-0">Open</h3>
+        <hr class="divider my-2" />
+    </div>
+
+    {% include "repository_tickets_table.html" with issues=issues.open %}
+
+</div>
+{% endblock %}

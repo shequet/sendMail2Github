@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title_page %}Mon compte{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="card">
+    <div class="container">
+        <div class="container bg-white">
+             <div class="container bg-white p-5 rounded">
+            <h2 class="text-center mt-0">Mon compte</h2>
+            <hr class="divider my-2" />
+        </div>
+         <p class="text-muted mb-5 p-5">
+            Nom d'utilisateur : {{ user.username }}
+         </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

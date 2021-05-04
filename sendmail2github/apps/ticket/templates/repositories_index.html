@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title_page %}Tickets{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="card">
+    <div class="container">
+         <div class="container p-5 rounded">
+        <h2 class="text-center mt-0">Repositories</h2>
+        <hr class="divider my-2" />
+    </div>
+
+        <div class="row">
+        {% for repo in repositories %}
+            <div class="col-sm-6 p-2">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">{{ repo.full_name }}</h5>
+                <p class="card-text"></p>
+                <a href="{% url 'repository_tickets' repo.id %}" class="btn btn-primary">Tickets</a>
+              </div>
+            </div>
+            </div>
+        {% endfor %}
+        </div>
+</div>
+{% endblock %}
