@@ -156,3 +156,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 GITHUB_TOKEN = ''
 GITHUB_REPO = ''
 
+IMAP_HOST = ''
+IMAP_USER = ''
+IMAP_PASSWORD = ''
+IMAP_PORT = ''
+IMAP_TLS = ''
