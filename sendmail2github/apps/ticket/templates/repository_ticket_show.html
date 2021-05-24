@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title_page %}Tickets {%if request.path == '/ticket/' %}ouverts {% else %}Terminés{% endif %}{% endblock %}
+{% block title_page %}Ticket #{{ issue.number }}: {{ issue.title }}{% endblock %}
 {% load crispy_forms_tags %}
 
 {% block content %}
