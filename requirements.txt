@@ -5,3 +5,4 @@ django-crispy-forms==1.10.0
 django-heroku
 gunicorn==20.0.4
 coverage==5.4
+PyGithub==1.54.1
