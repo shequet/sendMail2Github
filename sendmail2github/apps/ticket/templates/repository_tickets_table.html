@@ -1,11 +1,36 @@
  <table class="table table-striped">
       <thead class="thead-dark">
         <tr>
-          <th scope="col">#</th>
+          <th scope="col">
+              <label for="number">Numéro:</label>
+              <input class="form-control" id="number" placeholder="#"/>
+          </th>
           <th scope="col">Date</th>
-          <th scope="col">Assignees</th>
-          <th scope="col">Labels</th>
-          <th scope="col">Title</th>
+          <th scope="col">
+            <label for="assigne">Assigne:</label>
+            <select class="form-control" id="assigne">
+                <option>-- Tout --</option>
+              {% for assignee in assignees %}
+                <option>{{ assignee.name }}</option>
+              {% endfor %}
+            </select>
+          </th>
+          <th scope="col">
+            <label for="label">Label:</label>
+            <select class="form-control" id="label">
+                <option>-- Tout --</option>
+              {% for label in labels %}
+                <option>{{ label.name }}</option>
+              {% endfor %}
+            </select>
+          </th>
+          <th scope="col">
+              <label for="title">Titre:</label>
+              <input class="form-control" id="title" placeholder="Titre"/>
+          </th>
+          <th>
+              <button class="btn btn-primary">Filtrer</button>
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -24,6 +49,9 @@
                     {% endfor %}
                 </td>
                 <td>{{ issue.title }}</td>
+                <td>
+                    <button class="btn btn-secondary">Voir</button>
+                </td>
             </tr>
          {% endfor %}
       </tbody>
