@@ -6,3 +6,4 @@ django-heroku
 gunicorn==20.0.4
 coverage==5.4
 PyGithub==1.54.1
+imap-tools==0.41.0

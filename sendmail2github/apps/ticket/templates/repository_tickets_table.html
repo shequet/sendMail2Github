@@ -1,38 +1,39 @@
  <table class="table table-striped">
-      <thead class="thead-dark">
+     <form method="POST" action="">
+         {% csrf_token %}
+      <thead>
         <tr>
-          <th scope="col">
-              <label for="number">Numéro:</label>
-              <input class="form-control" id="number" placeholder="#"/>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+            <th scope="col">
+            <select class="form-control" name="status">
+                <option value="">-- Tout --</option>
+              {% for stat in tickets.status %}
+                <option value="{{ stat.name }}" {%if filters.status == stat.name %}selected{% endif %}>{{ stat.name|cut:"Status: " }}</option>
+              {% endfor %}
+            </select>
           </th>
-          <th scope="col">Date</th>
-          <th scope="col">
-            <label for="assigne">Assigne:</label>
-            <select class="form-control" id="assigne">
-                <option>-- Tout --</option>
-              {% for assignee in assignees %}
-                <option>{{ assignee.name }}</option>
+            <th scope="col">
+            <select class="form-control" name="user">
+                <option value="all">-- Tout --</option>
+              {% for user in tickets.users %}
+                <option value="{{ user.name}}" {%if filters.user == user.name %}selected{% endif %}>{{ user.name|cut:"User: " }}</option>
               {% endfor %}
             </select>
           </th>
           <th scope="col">
-            <label for="label">Label:</label>
-            <select class="form-control" id="label">
-                <option>-- Tout --</option>
-              {% for label in labels %}
-                <option>{{ label.name }}</option>
-              {% endfor %}
-            </select>
+
           </th>
           <th scope="col">
-              <label for="title">Titre:</label>
-              <input class="form-control" id="title" placeholder="Titre"/>
+              <input class="form-control" placeholder="Titre" name="title" />
           </th>
           <th>
-              <button class="btn btn-primary">Filtrer</button>
+              <button type="submit" class="btn btn-primary">Filtrer</button>
           </th>
         </tr>
       </thead>
+      </form>
       <tbody>
         {% for issue in issues %}
             <tr>
@@ -45,7 +46,23 @@
                 </td>
                 <td>
                     {% for label in issue.labels %}
+                        {% if 'Status: ' in label.name %}
+                        <span class="badge badge-pill" style="background-color:#{{ label.color }}">{{ label.name|cut:"Status: " }}</span>
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for label in issue.labels %}
+                        {% if 'User: ' in label.name %}
+                        {{ label.name|cut:"User: " }}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for label in issue.labels %}
+                        {% if 'Status: ' not in label.name and 'User: ' not in label.name  %}
                         <span class="badge badge-pill" style="background-color:#{{ label.color }}">{{ label.name }}</span>
+                        {% endif %}
                     {% endfor %}
                 </td>
                 <td>{{ issue.title }}</td>

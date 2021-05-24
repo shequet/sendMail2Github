@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'sendmail2github.apps.core',
     'sendmail2github.apps.authentication',
     'sendmail2github.apps.ticket',
+    'sendmail2github.apps.mail',
 ]
 
 MIDDLEWARE = [
@@ -160,6 +161,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 GITHUB_TOKEN = os.environ['GITHUB_TOKEN']
 GITHUB_REPO = os.environ['GITHUB_REPO']
+
+IMAP_HOST = os.environ['IMAP_HOST']
+IMAP_USER = os.environ['IMAP_USER']
+IMAP_PASSWORD = os.environ['IMAP_PASSWORD']
+IMAP_PORT = os.environ['IMAP_PORT']
+IMAP_TLS = os.environ['IMAP_TLS']
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())

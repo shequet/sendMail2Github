@@ -7,4 +7,5 @@ from .views import tickets
 
 urlpatterns = [
     path('', tickets, name='tickets'),
+    path('close', tickets, name='tickets_close'),
 ]
