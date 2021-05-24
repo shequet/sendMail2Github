@@ -6,7 +6,7 @@
           <th scope="col"></th>
           <th scope="col"></th>
             <th scope="col">
-            <select class="form-control" name="status">
+            <select class="form-control" name="status"  onchange="this.form.submit()">
                 <option value="">-- Tout --</option>
               {% for stat in tickets.status %}
                 <option value="{{ stat.name }}" {%if filters.status == stat.name %}selected{% endif %}>{{ stat.name|cut:"Status: " }}</option>
@@ -14,7 +14,7 @@
             </select>
           </th>
             <th scope="col">
-            <select class="form-control" name="user">
+            <select class="form-control" name="user"  onchange="this.form.submit()">
                 <option value="all">-- Tout --</option>
               {% for user in tickets.users %}
                 <option value="{{ user.name}}" {%if filters.user == user.name %}selected{% endif %}>{{ user.name|cut:"User: " }}</option>
@@ -25,10 +25,9 @@
 
           </th>
           <th scope="col">
-              <input class="form-control" placeholder="Titre" name="title" />
+
           </th>
           <th>
-              <button type="submit" class="btn btn-primary">Filtrer</button>
           </th>
         </tr>
       </thead>
@@ -36,7 +35,7 @@
       <tbody>
         {% for issue in issues %}
             <tr>
-                <td>#{{ issue.number }}
+                <td><a href="{% url 'ticket_show' issue.number %}" >#{{ issue.number }}</a>
                 </td>
                 <td>
                     {% for assignee in issue.assignees %}
@@ -66,10 +65,9 @@
                 </td>
                 <td>
                     {{ issue.created_at }} - <b>{{ issue.title }}</b>
-
                 </td>
                 <td>
-                    <a href="{% url 'ticket_show' issue.number %}" class="btn btn-secondary">Voir</a>
+                    <a href="{% url 'ticket_show' issue.number %}" class="btn btn-primary">Voir</a>
                 </td>
             </tr>
          {% endfor %}
