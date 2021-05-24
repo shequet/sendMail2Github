@@ -5,6 +5,20 @@ from django.shortcuts import render
 from .ticket_api import TicketApi
 
 
+def ticket_show(request, ticket_id):
+    ticket_api = TicketApi()
+    comment = request.POST.get('comment', '')
+
+    if comment != '':
+        ticket_api.create_comment(id=ticket_id, comment='User: {mail}<br><br>{comment}'.format(mail=request.user.email, comment=comment))
+
+    return render(
+        request,
+        'repository_ticket_show.html', {
+            'issue': ticket_api.get_ticket(id=ticket_id)
+        })
+
+
 def tickets(request):
     state = 'open'
     if request.path == '/ticket/close':

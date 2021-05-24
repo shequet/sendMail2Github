@@ -86,3 +86,9 @@ class TicketApi:
                 ),
 
         }
+
+    def get_ticket(self, id):
+        return self.repo.get_issue(number=id)
+
+    def create_comment(self, id, comment):
+        return self.repo.get_issue(number=id).create_comment(body=comment)
