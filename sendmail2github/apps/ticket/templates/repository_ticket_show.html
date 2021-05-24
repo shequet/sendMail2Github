@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title_page %}Tickets {%if request.path == '/ticket/' %}ouverts {% else %}Terminés{% endif %}{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'tickets' %}">Tickets</a></li>
+        <li class="breadcrumb-item"><a href="/">#{{ issue.number }}</a></li>
+      </ol>
+    </nav>
+
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h2 class="display-4 text-center">{{ issue.title }}</h2>
+          {% for assignee in issue.assignees %}
+            <p class="text-center"><img class="avatar rounded-circle" src="{{ assignee.avatar_url }}" title="{{ assignee.name }}" /></p>
+          {% endfor %}
+
+          {% for label in issue.labels %}
+            {% if 'Status: ' in label.name %}
+                <h2 class="text-center"><span class="badge badge-pill" style="background-color:#{{ label.color }}">{{ label.name|cut:"Status: " }}</span></h2>
+            {% endif %}
+          {% endfor %}
+
+            <div class="p-3 mb-3 bg-light text-dark">
+                <b>{{ issue.created_at }}</b><br><br>
+                {{ issue.body|safe }}
+            </div>
+
+          {% for comment in issue.get_comments %}
+          <div class="p-3 mb-3 bg-light text-dark">
+                <b>{{ comment.created_at }}</b><br><br>
+                {{ comment.body|safe }}
+          </div>
+         {% endfor %}
+         <a id="lastcomment"></a>
+          <form method="POST" action="#lastcomment">
+               {% csrf_token %}
+              <div class="form-group">
+                  <textarea class="p-3 mb-3 form-control" placeholder="Comment" id="comment" name="comment" minlength="5" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Envoyer</button>
+          </form>
+
+      </div>
+    </div>
+
+</div>
+{% endblock %}

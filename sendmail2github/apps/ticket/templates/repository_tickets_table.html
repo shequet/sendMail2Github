@@ -5,7 +5,6 @@
         <tr>
           <th scope="col"></th>
           <th scope="col"></th>
-          <th scope="col"></th>
             <th scope="col">
             <select class="form-control" name="status">
                 <option value="">-- Tout --</option>
@@ -37,8 +36,8 @@
       <tbody>
         {% for issue in issues %}
             <tr>
-                <td>#{{ issue.number }}</td>
-                <td class="text-nowrap">{{ issue.created_at }}</td>
+                <td>#{{ issue.number }}
+                </td>
                 <td>
                     {% for assignee in issue.assignees %}
                       <img class="avatar rounded-circle" src="{{ assignee.avatar_url }}" title="{{ assignee.name }}" />
@@ -65,9 +64,12 @@
                         {% endif %}
                     {% endfor %}
                 </td>
-                <td>{{ issue.title }}</td>
                 <td>
-                    <button class="btn btn-secondary">Voir</button>
+                    {{ issue.created_at }} - <b>{{ issue.title }}</b>
+
+                </td>
+                <td>
+                    <a href="{% url 'ticket_show' issue.number %}" class="btn btn-secondary">Voir</a>
                 </td>
             </tr>
          {% endfor %}
