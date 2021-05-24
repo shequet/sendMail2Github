@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 import sentry_sdk
+import django_heroku
 from sentry_sdk.integrations.django import DjangoIntegration
 from pathlib import Path
 
@@ -134,7 +135,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-LOGIN_REDIRECT_URL = '/account/profile/'
+LOGIN_REDIRECT_URL = '/ticket/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -158,3 +159,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 GITHUB_TOKEN = os.environ['GITHUB_TOKEN']
+GITHUB_REPO = os.environ['GITHUB_REPO']
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())

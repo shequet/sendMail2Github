@@ -2,3 +2,6 @@ Django==3.1.6
 whitenoise==5.2.0
 sentry-sdk==1.0.0
 django-crispy-forms==1.10.0
+django-heroku
+gunicorn==20.0.4
+coverage==5.4
