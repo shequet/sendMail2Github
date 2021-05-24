@@ -8,12 +8,8 @@ before_script:
 services:
   - postgresql
 
-env:
-  - DJANGO_SETTINGS_MODULE=sendmail2github.settings
-  - DJANGO_SECRET_KEY=)p05)stnt3)*%p5ib!+qa591c+jclfw(bd*xf8=0s+j24=6otc
-  - GITHUB_REPO=
-  - GITHUB_TOKEN=
-  - SENTRY_URL=
+env: DJANGO_SETTINGS_MODULE=sendmail2github.settings_travis
+
 script:
   - python manage.py collectstatic
   - python manage.py test
