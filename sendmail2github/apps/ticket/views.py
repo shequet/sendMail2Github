@@ -1,20 +1,39 @@
 """
 ticket app views document
 """
-
 from django.shortcuts import render
-from github import Github
-from django.conf import settings
+from .ticket_api import TicketApi
+
 
 def tickets(request):
-    g = Github(base_url="https://api.github.com", login_or_token=settings.GITHUB_TOKEN)
-    repo = g.get_repo(settings.GITHUB_REPO)
+    state = 'open'
+    if request.path == '/ticket/close':
+        state = 'closed'
 
-    return render(request, 'repository_tickets.html', {
-        'repo': repo,
-        'labels': repo.get_labels(),
-        'assignees': repo.get_assignees(),
-        'issues': {
-            'open': repo.get_issues(state='open'),
-        }
-    })
+    ticket_api = TicketApi()
+    labels = []
+
+    status = request.POST.get('status', '')
+    if status != '':
+        labels.append(status)
+
+    user = request.POST.get('user', '')
+    if user != '':
+        labels.append(user)
+    elif user != 'all':
+        user = 'User: {mail}'.format(mail=request.user.email)
+        labels.append(user)
+
+    return render(
+        request,
+        'repository_tickets.html', {
+            'tickets': ticket_api.get_tickets(
+                labels=labels,
+                state=state
+            ),
+            'filters': {
+                'status': status,
+                'user': user,
+            }
+        })
+

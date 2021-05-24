@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title_page %}Tickets{% endblock %}
+{% block title_page %}Tickets {%if request.path == '/ticket/' %}ouverts {% else %}Terminés{% endif %}{% endblock %}
 {% load crispy_forms_tags %}
 
 {% block content %}
@@ -10,10 +10,13 @@
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/">Accueil</a></li>
         <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'tickets' %}">Tickets</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{%if request.path == '/ticket/' %}Ouverts {% else %}Terminés{% endif %}</li>
+
+
       </ol>
     </nav>
 
-    {% include "repository_tickets_table.html" with issues=issues.open %}
+    {% include "repository_tickets_table.html" with issues=tickets.issues %}
 
 </div>
 {% endblock %}
