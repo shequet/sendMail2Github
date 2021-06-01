@@ -18,7 +18,7 @@ def ticket_show(request, ticket_id):
 
     return render(
         request,
-        'repository_ticket_show.html', {
+        'ticket_show.html', {
             'issue': ticket_api.get_ticket(id=ticket_id)
         })
 
@@ -44,7 +44,7 @@ def tickets(request):
 
     return render(
         request,
-        'repository_tickets.html', {
+        'tickets.html', {
             'tickets': ticket_api.get_tickets(
                 labels=labels,
                 state=state

@@ -10,11 +10,17 @@
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/">Accueil</a></li>
         <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'users' %}">Admin</a></li>
-        <li class="breadcrumb-item"><a href="/">#{{ user.is }}</a></li>
+        <li class="breadcrumb-item"><a href="/">#{{ user.id }}</a></li>
       </ol>
     </nav>
-
-    {{ user }}
+    <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+            <h2 class="display-4 text-center">Utilisateur #{{ user.id }}</h2>
+              <p>
+                  {{ user }}
+              </p>
+          </div>
+    </div>
 
 </div>
 {% endblock %}

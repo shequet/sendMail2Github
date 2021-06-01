@@ -30,7 +30,7 @@ def users(request):
 
 
 @login_required
-def register(request):
+def user_add(request):
     """
     Display register user of the site
 
@@ -49,6 +49,5 @@ def register(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)
-            return redirect(reverse('profile'))
+            return redirect('user_show', user_id=user.id)
 

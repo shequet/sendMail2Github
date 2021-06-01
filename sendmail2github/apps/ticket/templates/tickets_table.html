@@ -25,7 +25,6 @@
 
           </th>
           <th scope="col">
-
           </th>
           <th>
           </th>
@@ -35,38 +34,38 @@
       <tbody>
         {% for issue in issues %}
             <tr>
-                <td><a href="{% url 'ticket_show' issue.number %}" >#{{ issue.number }}</a>
+                <td class="align-middle"><a href="{% url 'ticket_show' issue.number %}" >#{{ issue.number }}</a>
                 </td>
-                <td>
+                <td class="align-middle">
                     {% for assignee in issue.assignees %}
                       <img class="avatar rounded-circle" src="{{ assignee.avatar_url }}" title="{{ assignee.name }}" />
                     {% endfor %}
                 </td>
-                <td>
+                <td class="align-middle">
                     {% for label in issue.labels %}
                         {% if 'Status: ' in label.name %}
                         <span class="badge badge-pill" style="background-color:#{{ label.color }}">{{ label.name|cut:"Status: " }}</span>
                         {% endif %}
                     {% endfor %}
                 </td>
-                <td>
+                <td class="align-middle">
                     {% for label in issue.labels %}
                         {% if 'User: ' in label.name %}
                         {{ label.name|cut:"User: " }}
                         {% endif %}
                     {% endfor %}
                 </td>
-                <td>
+                <td class="align-middle">
                     {% for label in issue.labels %}
                         {% if 'Status: ' not in label.name and 'User: ' not in label.name  %}
                         <span class="badge badge-pill" style="background-color:#{{ label.color }}">{{ label.name }}</span>
                         {% endif %}
                     {% endfor %}
                 </td>
-                <td>
+                <td class="align-middle">
                     {{ issue.created_at }} - <b>{{ issue.title }}</b>
                 </td>
-                <td>
+                <td class="align-middle">
                     <a href="{% url 'ticket_show' issue.number %}" class="btn btn-primary">Voir</a>
                 </td>
             </tr>
