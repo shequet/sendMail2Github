@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title_page %}User #{{ user.id }}: {{ issue.title }}{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'users' %}">Admin</a></li>
+        <li class="breadcrumb-item"><a href="/">#{{ user.is }}</a></li>
+      </ol>
+    </nav>
+
+    {{ user }}
+
+</div>
+{% endblock %}
