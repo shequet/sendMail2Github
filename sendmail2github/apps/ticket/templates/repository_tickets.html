@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title_page %}Tickets {%if request.path == '/ticket/' %}ouverts {% else %}Terminés{% endif %}{% endblock %}
+{% block title_page %}Tickets{% endblock %}
 {% load crispy_forms_tags %}
 
 {% block content %}
@@ -10,13 +10,29 @@
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/">Accueil</a></li>
         <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'tickets' %}">Tickets</a></li>
-        <li class="breadcrumb-item active" aria-current="page">{%if request.path == '/ticket/' %}Ouverts {% else %}Terminés{% endif %}</li>
-
-
       </ol>
     </nav>
 
-    {% include "repository_tickets_table.html" with issues=tickets.issues %}
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          {%if request.path == '/ticket/' %}
+            <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">En cours</button>
+            <a href="{% url 'tickets_close' %}" class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Terminés</a>
+          {% else %}
+            <a href="{% url 'tickets' %}" class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">En cours</a>
+            <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Terminé</button>
+          {% endif %}
+      </div>
+    </nav>
+    <div class="tab-content border" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+          {% include "repository_tickets_table.html" with issues=tickets.issues %}
+      </div>
+    </div>
+
+
+
+
 
 </div>
 {% endblock %}
