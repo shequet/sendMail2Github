@@ -25,6 +25,7 @@ urlpatterns = [
     url('admin/', admin.site.urls),
     url('account/', include('sendmail2github.apps.authentication.urls')),
     url('ticket/', include('sendmail2github.apps.ticket.urls')),
+    url('mail/', include('sendmail2github.apps.mail.urls')),
 ]
 
 print(settings.STATIC_URL)
