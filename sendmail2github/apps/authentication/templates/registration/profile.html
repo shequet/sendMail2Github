@@ -5,13 +5,16 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div class="card">
-    <div class="container">
-        <div class="container bg-white">
-             <div class="container bg-white p-5 rounded">
-            <h2 class="text-center mt-0">Mon compte</h2>
-            <hr class="divider my-2" />
-        </div>
+<div>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'profile' %}">Mon compte</a></li>
+      </ol>
+    </nav>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h2 class="display-4 text-center">Mon compte</h2>
          <ul class="text-muted mb-5 p-5">
              <li>Nom d'utilisateur : {{ user.username }}</li>
              <li>Email : {{ user.email }}</li>

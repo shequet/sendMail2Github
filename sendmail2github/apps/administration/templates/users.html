@@ -14,12 +14,19 @@
       </ol>
     </nav>
 
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Utilisateurs</button>
+            <a href="{% url 'user_add' %}" class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Ajouter</a>
+      </div>
+    </nav>
+
+
      <table class="table table-striped">
          <thead>
          <tr>
-             <th>Active</th>
-             <th>Admin</th>
-             <th>Id</th>
+             <th class="text-center">Active</th>
+             <th class="text-center">Admin</th>
              <th>Username</th>
              <th>Mail</th>
              <th>Actions</th>
@@ -27,13 +34,24 @@
          </thead>
          <tbody>
          {% for user in users %}
-             <tr>
-                 <td>{{ user.is_active }}</td>
-                 <td>{{ user.is_superuser }}</td>
-                 <td>{{ user.id }}</td>
-                 <td>{{ user.username }}</td>
-                 <td>{{ user.email }}</td>
-                 <td>
+             <tr class="">
+                 <td class="align-middle text-center">
+                     {% if user.is_active %}
+                        <i class="far fa-check-circle text-success h3"></i>
+                     {% else %}
+                       <i class="far fa-ban text-danger h3"></i>
+                     {% endif %}
+                 </td>
+                 <td class="align-middle text-center">
+                     {% if user.is_superuser %}
+                        <i class="far fa-check-circle text-success h3"></i>
+                     {% else %}
+                       <i class="far fa-ban text-danger h3"></i>
+                     {% endif %}
+                 </td>
+                 <td class="align-middle">{{ user.username }}</td>
+                 <td class="align-middle">{{ user.email }}</td>
+                 <td class="align-middle">
                      <a href="{% url 'user_show' user.id %}" class="btn btn-primary">Voir</a>
                  </td>
              </tr>
