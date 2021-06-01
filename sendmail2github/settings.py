@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'sendmail2github.apps.authentication',
     'sendmail2github.apps.ticket',
     'sendmail2github.apps.mail',
+    'sendmail2github.apps.administration',
 ]
 
 MIDDLEWARE = [
@@ -167,6 +168,14 @@ IMAP_USER = os.environ['IMAP_USER']
 IMAP_PASSWORD = os.environ['IMAP_PASSWORD']
 IMAP_PORT = os.environ['IMAP_PORT']
 IMAP_TLS = os.environ['IMAP_TLS']
+
+SMTP_FROM = os.environ['SMTP_FROM']
+
+SMTP_HOST = os.environ['SMTP_HOST']
+SMTP_USER = os.environ['SMTP_USER']
+SMTP_PASSWORD = os.environ['SMTP_PASSWORD']
+SMTP_PORT = os.environ['SMTP_PORT']
+SMTP_TLS = os.environ['SMTP_TLS']
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())

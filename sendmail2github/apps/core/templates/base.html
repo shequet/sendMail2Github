@@ -18,10 +18,13 @@
             <a class="btn btn-outline-light {%if request.path == '/ticket/' %}active{% endif %}" href="{% url 'tickets' %}" title="Tickets">Tickets en cours</a>
             <a class="btn btn-outline-light {%if request.path == '/ticket/close' %}active{% endif %}" href="{% url 'tickets_close' %}" title="Tickets">Tickets terminés</a>
             <a class="btn btn-outline-light {%if request.path == '/account/profile/' %}active{% endif %}"  href="{% url 'profile' %}" title="Mon compte">Mon compte</a>
+            {% if request.user.is_superuser %}
+            <a class="btn btn-outline-light {%if request.path == '/admin/' %}active{% endif %}"  href="{% url 'users' %}" title="Admin">Admin</a>
+            {% endif %}
+
             <a class="btn btn-outline-light" href="{% url 'logout' %}" title="Deconnexion">Deconnexion</a>
         {% else %}
             <a class="btn btn-outline-light" href="{% url 'login' %}" title="Connexion">Connexion</a>
-            <a class="btn btn-light" href="{% url 'register' %}" title="Inscription">Inscription</a>
         {% endif %}
         </nav>
     </navbar>

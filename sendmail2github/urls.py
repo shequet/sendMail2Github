@@ -14,7 +14,6 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.conf.urls import url
-from django.contrib import admin
 from django.urls import include
 from django.conf.urls.static import static
 from django.conf import settings
@@ -22,9 +21,10 @@ from django.conf import settings
 
 urlpatterns = [
     url('', include('sendmail2github.apps.core.urls')),
-    url('admin/', admin.site.urls),
+    url('admin/', include('sendmail2github.apps.administration.urls')),
     url('account/', include('sendmail2github.apps.authentication.urls')),
     url('ticket/', include('sendmail2github.apps.ticket.urls')),
+    url('mail/', include('sendmail2github.apps.mail.urls')),
 ]
 
 print(settings.STATIC_URL)

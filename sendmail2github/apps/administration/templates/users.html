@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title_page %}Admin Users{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'tickets' %}">Admin</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Users</li>
+      </ol>
+    </nav>
+
+     <table class="table table-striped">
+         <thead>
+         <tr>
+             <th>Active</th>
+             <th>Admin</th>
+             <th>Id</th>
+             <th>Username</th>
+             <th>Mail</th>
+             <th>Actions</th>
+         </tr>
+         </thead>
+         <tbody>
+         {% for user in users %}
+             <tr>
+                 <td>{{ user.is_active }}</td>
+                 <td>{{ user.is_superuser }}</td>
+                 <td>{{ user.id }}</td>
+                 <td>{{ user.username }}</td>
+                 <td>{{ user.email }}</td>
+                 <td>
+                     <a href="{% url 'user_show' user.id %}" class="btn btn-primary">Voir</a>
+                 </td>
+             </tr>
+         {% endfor %}
+         </tbody>
+     </table>
+</div>
+{% endblock %}

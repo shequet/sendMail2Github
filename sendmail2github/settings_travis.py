@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'sendmail2github.apps.core',
     'sendmail2github.apps.authentication',
     'sendmail2github.apps.ticket',
+    'sendmail2github.apps.mail',
+    'sendmail2github.apps.administration',
 ]
 
 MIDDLEWARE = [
@@ -161,3 +163,9 @@ IMAP_USER = ''
 IMAP_PASSWORD = ''
 IMAP_PORT = ''
 IMAP_TLS = ''
+
+SMTP_HOST = ''
+SMTP_USER = ''
+SMTP_PASSWORD = ''
+SMTP_PORT = ''
+SMTP_TLS = ''
