@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'sendmail2github.apps.core',
     'sendmail2github.apps.authentication',
     'sendmail2github.apps.ticket',
+    'sendmail2github.apps.mail',
 ]
 
 MIDDLEWARE = [
