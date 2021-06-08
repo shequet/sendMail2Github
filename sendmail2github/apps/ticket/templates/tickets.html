@@ -13,6 +13,10 @@
       </ol>
     </nav>
 
+    <div class="alert alert-info">
+        <i class="fa fa-info"></i> Pour créer un nouveau ticket veuillez envoyer un mail à l'adresse <a href="mailto:{{ settings.SMTP_FROM }}">{{ settings.SMTP_FROM }}</a>
+    </div>
+
     <nav>
       <div class="nav nav-tabs" id="nav-tab" role="tablist">
           {%if request.path == '/ticket/' %}
@@ -24,15 +28,12 @@
           {% endif %}
       </div>
     </nav>
-    <div class="tab-content border" id="nav-tabContent">
+
+    <div class="tab-content border gradient-blue" id="nav-tabContent">
       <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
           {% include "tickets_table.html" with issues=tickets.issues %}
       </div>
     </div>
-
-
-
-
 
 </div>
 {% endblock %}

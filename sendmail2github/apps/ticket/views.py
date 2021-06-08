@@ -1,11 +1,8 @@
 """
 ticket app views document
 """
-import json
-
 from django.shortcuts import render
-from django.http import JsonResponse, HttpResponseServerError, HttpResponse
-from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
 from .ticket_api import TicketApi
 
 
@@ -49,6 +46,9 @@ def tickets(request):
                 labels=labels,
                 state=state
             ),
+            'settings': {
+              'SMTP_FROM': settings.SMTP_FROM
+            },
             'filters': {
                 'status': status,
                 'user': user,
