@@ -9,7 +9,7 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/">Accueil</a></li>
-        <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'tickets' %}">Admin</a></li>
+        <li class="breadcrumb-item" aria-current="page"><a href="{% url 'users' %}">Admin</a></li>
         <li class="breadcrumb-item active" aria-current="page">Users</li>
       </ol>
     </nav>
@@ -23,7 +23,7 @@
 
     {% if message %}<br><div class="alert alert-warning">{{ message }}</div>{% endif %}
 
-     <table class="table table-striped">
+     <table class="table table-striped gradient-blue">
          <thead>
          <tr>
              <th class="text-center">Actif</th>
@@ -53,8 +53,8 @@
                  <td class="align-middle">{{ user.username }}</td>
                  <td class="align-middle">{{ user.email }}</td>
                  <td class="align-middle text-right">
-                     <a href="{% url 'user_show' user.id %}" class="btn btn-primary">Voir</a>
-                     <a href="{% url 'user_edit' user.id %}" class="btn btn-primary">Modifier</a>
+                     <a href="{% url 'user_show' user.id %}" class="btn btn-primary" title="Voir"><i class="fa fa-eye"></i></a>
+                     <a href="{% url 'user_edit' user.id %}" class="btn btn-primary" title="Modifier"><i class="fa fa-edit"></i></a>
                  </td>
              </tr>
          {% endfor %}

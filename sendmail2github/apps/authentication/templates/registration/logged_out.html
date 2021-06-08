@@ -4,17 +4,19 @@
 {% block title_page %}Déconnexion{% endblock %}
 
 {% block content %}
-<header class="masthead">
-    <section class="page-section">
-        <div class="container bg-white">
-             <div class="container bg-white p-5 rounded">
-            <h2 class="text-center mt-0">Déconnexion</h2>
-            <hr class="divider my-2" />
+<div>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+        <li class="breadcrumb-item">Déconnexion</li>
+      </ol>
+    </nav>
+    <div class="jumbotron jumbotron-fluid gradient-blue">
+      <div class="container">
+        <h2 class="display-4 text-center">Mon compte</h2>
+         <a href="{% url 'login'%}" class="btn btn-primary w-100">Cliquez ici pour vous reconnecter</a>
         </div>
-         <p class="text-muted mb-5 p-5">
-            <a href="{% url 'login'%}" class="btn btn-primary">Cliquez ici pour vous reconnecter</a>
-         </p>
-        </div>
-    </section>
-</header>
+    </div>
+</div>
+
 {% endblock %}

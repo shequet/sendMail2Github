@@ -9,11 +9,11 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/">Accueil</a></li>
-        <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'users' %}">Admin</a></li>
-        <li class="breadcrumb-item">Modifier</li>
+        <li class="breadcrumb-item" aria-current="page"><a href="{% url 'users' %}">Admin</a></li>
+        <li class="breadcrumb-item active"><a href="{% url 'user_edit' user.id %}">{{ user.username }}</a></li>
       </ol>
     </nav>
-    <div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron jumbotron-fluid gradient-blue">
       <div class="container">
         <h2 class="display-4 text-center">Modifier {{ user.username }}</h2>
           {% if errors %}
@@ -26,7 +26,7 @@
         <form method="post" novalidate class="mb-5 p-5">
             {% csrf_token %}
             {{ form|crispy }}
-            <button type="submit" class="btn btn-primary">Modifier</button>
+            <button type="submit" class="btn btn-primary w-100"><i class="fa fa-eye"></i> Modifier</button>
         </form>
       </div>
     </div>

@@ -13,7 +13,7 @@
         <li class="breadcrumb-item"><a href="{% url 'user_show' user.id %}">{{ user.username }}</a></li>
       </ol>
     </nav>
-    <div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron jumbotron-fluid gradient-blue">
           <div class="container">
             <h2 class="display-4 text-center">Utilisateur {{ user.username }}</h2>
               <ul class="text-muted p-5">
@@ -35,8 +35,10 @@
                  </li>
              </ul>
               <div class="p-3">
-                  <a href="{% url 'user_edit' user.id %}" class="btn btn-primary">Modifier</a>
-                  <a href="{% url 'user_delete' user.id %}" class="btn btn-danger">Supprimer</a>
+                  <a href="{% url 'user_edit' user.id %}" class="btn btn-primary {% if user.is_superuser == false %}w-50{% else %}w-100{% endif %}"><i class="fa fa-edit"></i> Modifier</a>
+                {% if user.is_superuser == false %}
+                  <a href="{% url 'user_delete' user.id %}" class="btn btn-danger w-50"><i class="fa fa-trash"></i> Supprimer</a>
+                {% endif %}
               </div>
           </div>
     </div>

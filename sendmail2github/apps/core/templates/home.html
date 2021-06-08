@@ -1,9 +1,35 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-      <h1 class="display-4">GitHub for non-developers</h1>
+<div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+      <h1 class="display-4 mb-5 fg-grey">GitHub pour les non-développeurs</h1>
+        <h2 class="mb-5 fg-grey">Ouvrez la création de tickets GitHub à toute votre entreprise</h2>
+    <div class="row">
+      <div class="col-md-6 col-sm-12 col-xs-12 mb-5">
+        <div class="card">
+            <img class="card-img-top" src="{% static 'images/colleagues-giving-fist-bump.jpg' %}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Connectez l'ensemble de votre entreprose</h5>
+            <p class="card-text">Connectez l'ensemble de votre entreprise sur les tickets GitHub sans besoin de créer des comptes</p>
+             <a class="btn btn-primary w-100" href="{% url 'login' %}" title="Connexion"><i class="fa fa-sign-in-alt"></i> Connexion</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12 col-xs-12 mb-5">
+        <div class="card">
+            <img class="card-img-top" src="{% static 'images/send-mail.png' %}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Création de tickets par mail</h5>
+            <p class="card-text">Envoyer un mail à une adresse support afin de créer un ticket automatiquement dans GitHub</p>
+              <a class="btn btn-primary w-100" href="{% url 'login' %}" title="Connexion"><i class="fa fa-sign-in-alt"></i> Connexion</a>
+          </div>
+        </div>
+      </div>
     </div>
+</div>
+
+
 {% endblock %}

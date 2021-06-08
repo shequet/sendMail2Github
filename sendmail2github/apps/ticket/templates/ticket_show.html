@@ -10,11 +10,11 @@
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/">Accueil</a></li>
         <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'tickets' %}">Tickets</a></li>
-        <li class="breadcrumb-item"><a href="/">#{{ issue.number }}</a></li>
+        <li class="breadcrumb-item">#{{ issue.number }}</li>
       </ol>
     </nav>
 
-    <div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron jumbotron-fluid gradient-blue">
       <div class="container">
         <h2 class="display-4 text-center">{{ issue.title }}</h2>
           {% for assignee in issue.assignees %}
@@ -42,9 +42,9 @@
           <form method="POST" action="#lastcomment">
                {% csrf_token %}
               <div class="form-group">
-                  <textarea class="p-3 mb-3 form-control" placeholder="Commentaire" id="comment" name="comment" minlength="5" required></textarea>
+                  <textarea class="p-3 mb-3 form-control" placeholder="Ecrire votre commentaire ici" id="comment" name="comment" minlength="5" required></textarea>
               </div>
-              <button type="submit" class="btn btn-primary">Envoyer le commentaire</button>
+              <button type="submit" class="btn btn-primary w-100"><i class="fa fa-save"></i> Ajouter le commentaire</button>
           </form>
 
       </div>
