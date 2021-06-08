@@ -35,9 +35,9 @@
                  </li>
              </ul>
               <div class="p-3">
-                  <a href="{% url 'user_edit' user.id %}" class="btn btn-primary {% if user.is_superuser == false %}w-50{% else %}w-100{% endif %}"><i class="fa fa-edit"></i> Modifier</a>
-                {% if user.is_superuser == false %}
-                  <a href="{% url 'user_delete' user.id %}" class="btn btn-danger w-50"><i class="fa fa-trash"></i> Supprimer</a>
+                  <a href="{% url 'user_edit' user.id %}" class="btn btn-primary w-100"><i class="fa fa-edit"></i> Modifier</a>
+                {% if user.is_superuser == False %}
+                  <a href="{% url 'user_delete' user.id %}" class="btn btn-danger w-100 mt-3"><i class="fa fa-trash"></i> Supprimer</a>
                 {% endif %}
               </div>
           </div>
