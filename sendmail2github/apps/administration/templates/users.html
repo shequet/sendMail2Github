@@ -53,8 +53,8 @@
                  <td class="align-middle">{{ user.username }}</td>
                  <td class="align-middle">{{ user.email }}</td>
                  <td class="align-middle text-right">
-                     <a href="{% url 'user_show' user.id %}" class="btn btn-primary" title="Voir"><i class="fa fa-eye"></i></a>
-                     <a href="{% url 'user_edit' user.id %}" class="btn btn-primary" title="Modifier"><i class="fa fa-edit"></i></a>
+                     <a href="{% url 'user_show' user.id %}" class="btn btn-info" title="Voir"><i class="fa fa-eye"></i></a>
+                     <a href="{% url 'user_edit' user.id %}" class="btn btn-info" title="Modifier"><i class="fa fa-edit"></i></a>
                  </td>
              </tr>
          {% endfor %}
