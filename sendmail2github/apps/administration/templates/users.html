@@ -21,15 +21,16 @@
       </div>
     </nav>
 
+    {% if message %}<br><div class="alert alert-warning">{{ message }}</div>{% endif %}
 
      <table class="table table-striped">
          <thead>
          <tr>
-             <th class="text-center">Active</th>
-             <th class="text-center">Admin</th>
-             <th>Username</th>
+             <th class="text-center">Actif</th>
+             <th class="text-center">Super Utilisateur</th>
+             <th>Nom d'utilisateur</th>
              <th>Mail</th>
-             <th>Actions</th>
+             <th class="text-right">Actions</th>
          </tr>
          </thead>
          <tbody>
@@ -51,8 +52,9 @@
                  </td>
                  <td class="align-middle">{{ user.username }}</td>
                  <td class="align-middle">{{ user.email }}</td>
-                 <td class="align-middle">
+                 <td class="align-middle text-right">
                      <a href="{% url 'user_show' user.id %}" class="btn btn-primary">Voir</a>
+                     <a href="{% url 'user_edit' user.id %}" class="btn btn-primary">Modifier</a>
                  </td>
              </tr>
          {% endfor %}

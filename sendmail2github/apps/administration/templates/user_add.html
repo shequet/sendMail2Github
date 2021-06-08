@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title_page %}Inscription{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'users' %}">Admin</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'user_add' %}">Ajouter</a></li>
+      </ol>
+    </nav>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h2 class="display-4 text-center">Ajouter un utilisateur</h2>
+          {% if errors %}
+          <ul class="alert alert-danger">
+              {% for name, message in errors.items %}
+              <li>{{ message }}</li>
+              {% endfor %}
+          </ul>
+          {% endif %}
+        <form method="post" novalidate class="mb-5 p-5">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-primary">Ajouter</button>
+        </form>
+      </div>
+    </div>
+    </div>
+</div>
+{% endblock %}
