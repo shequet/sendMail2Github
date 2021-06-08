@@ -12,7 +12,7 @@ pip install -r requirements.txt
 
 | Nom  | Exemple  | Description  |
 |---|---|---|
-| DJANGO_SECRET_KEY |   | Clé secrete pour Django  |
+| DJANGO_SECRET_KEY |   | Clé secrète pour Django  |
 | GITHUB_TOKEN | ghpxxxx  | Nom du token GitHub  |
 | GITHUB_REP | shequet/sendMail2Github  | Nom complet du repo Github  |
 | SENTRY_URL  |   |  URL de Sentry |
@@ -27,6 +27,20 @@ pip install -r requirements.txt
 | SMTP_USER  |   | Nom de l'utilisateur SMTP  |
 | SMTP_PASSWORD  |   | Mot de passe de l'utilisateur SMTP  |
 | SMTP_FROM  |   | Adresse Mail de l'expéditeur  |
+
+### Configurer un Webhook sur le repo Github
+
+### Indiquer l'url du serveur Django
+![Webhook1](doc/webhook_01.png)
+
+![Webhook2](doc/webhook_01.png)
+
+### Créer un API Key sur Github
+![ApiKey1](doc/github_api_01.png)
+
+![ApiKey2](doc/github_api_02.png)
+
+![ApiKey3](doc/github_api_03.png)
 
 ### Démarrer le serveur Web Dajngo en mode développeur
 ```shell
