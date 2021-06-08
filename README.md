@@ -8,6 +8,26 @@ Après avoir créé un virtual env, installez les dépendances via le requiremen
 pip install -r requirements.txt
 ```
 
+### Configurer les variables d'environnement
+
+| Nom  | Exemple  | Description  |
+|---|---|---|
+| DJANGO_SECRET_KEY |   | Clé secrete pour Django  |
+| GITHUB_TOKEN | ghpxxxx  | Nom du token GitHub  |
+| GITHUB_REP | shequet/sendMail2Github  | Nom complet du repo Github  |
+| SENTRY_URL  |   |  URL de Sentry |
+| IMAP_HOST  |   |  Nom ou IP du serveur Imap |
+| IMAP_PORT  |   |  Numéro du port Imap |
+| IMAP_TLS  |   | Activer ou non le TLS (0, 1)  |
+| IMAP_USER  |   | Nom de l'utilisateur Imap  |
+| IMAP_PASSWORD  |   | Mot de passe de l'utilisateur Imap  |
+| SMTP_HOST  |   |  Nom ou IP du serveur SMTP |
+| SMTP_PORT  |   |  Numéro du port SMTP |
+| SMTP_TLS  |   | Activer ou non le TLS (0, 1)  |
+| SMTP_USER  |   | Nom de l'utilisateur SMTP  |
+| SMTP_PASSWORD  |   | Mot de passe de l'utilisateur SMTP  |
+| SMTP_FROM  |   | Adresse Mail de l'expéditeur  |
+
 ### Démarrer le serveur Web Dajngo en mode développeur
 ```shell
 python manage.py runserver
