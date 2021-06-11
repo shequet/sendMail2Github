@@ -27,14 +27,15 @@ def user_show(request, user_id):
                 'message': "L'utilisateur n'existe pas"
             })
 
+
 @login_required
 def users(request):
     all_users = User.objects.values()
     return render(
-            request,
-            'users.html', {
-                'users': all_users
-            })
+        request,
+        'users.html', {
+            'users': all_users
+        })
 
 
 @login_required
