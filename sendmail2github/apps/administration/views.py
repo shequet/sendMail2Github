@@ -1,11 +1,8 @@
 """
 website app views document
 """
-from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required, permission_required
-from django.http import HttpResponse
 from django.shortcuts import redirect, render
-from django.urls import reverse
 from django.contrib.auth.models import User
 from .forms import CustomUserCreationForm
 

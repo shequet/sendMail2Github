@@ -11,12 +11,18 @@ def ticket_show(request, ticket_id):
     comment = request.POST.get('comment', '')
 
     if comment != '':
-        ticket_api.create_comment(id=ticket_id, comment='User: {mail}<br><br>{comment}'.format(mail=request.user.email, comment=comment))
+        ticket_api.create_comment(
+            number=ticket_id,
+            comment='User: {mail}<br><br>{comment}'.format(
+                mail=request.user.email,
+                comment=comment
+            )
+        )
 
     return render(
         request,
         'ticket_show.html', {
-            'issue': ticket_api.get_ticket(id=ticket_id)
+            'issue': ticket_api.get_ticket(number=ticket_id)
         })
 
 

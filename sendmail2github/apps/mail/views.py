@@ -1,5 +1,5 @@
 import json
-from django.http import JsonResponse, HttpResponseServerError, HttpResponse
+from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import smtplib
 from email.mime.text import MIMEText

@@ -39,7 +39,6 @@ class TestMailViewTests(TestCase):
         with unittest.mock.patch("smtplib.SMTP", autospec=True) as mock_smtp:
             result = webhook(httpretty.last_request())
             mock_smtp.assert_called()
-            mock_smtp.return_value.__enter__.return_value
 
             self.assertEqual(len(result.content), len(json.dumps({
                     'action': 'created',

@@ -15,25 +15,6 @@ import django_heroku
 from sentry_sdk.integrations.django import DjangoIntegration
 from pathlib import Path
 
-os.environ['SENTRY_URL'] = ''
-os.environ['DJANGO_SECRET_KEY'] = 'asqfdsqfsdfsdfsdf'
-os.environ['GITHUB_TOKEN'] = ''
-os.environ['GITHUB_REPO'] = ''
-
-os.environ['IMAP_HOST'] = ''
-os.environ['IMAP_USER'] = ''
-os.environ['IMAP_PASSWORD'] = ''
-os.environ['IMAP_PORT'] = ''
-os.environ['IMAP_TLS'] = ''
-
-os.environ['SMTP_FROM'] = ''
-
-os.environ['SMTP_HOST'] = ''
-os.environ['SMTP_USER'] = ''
-os.environ['SMTP_PASSWORD'] = ''
-os.environ['SMTP_PORT'] = ''
-os.environ['SMTP_TLS'] = ''
-
 sentry_sdk.init(
     dsn=os.environ['SENTRY_URL'],
     integrations=[DjangoIntegration()],
