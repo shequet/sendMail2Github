@@ -1,5 +1,5 @@
 """
-Urls for the website app
+Urls for the website authentification
 """
 from django.urls import include, path
 from .views import profile

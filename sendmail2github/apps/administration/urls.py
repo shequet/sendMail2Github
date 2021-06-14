@@ -1,5 +1,5 @@
 """
-Urls for the website app
+Urls for the website administration
 """
 from django.urls import path
 from .views import user_add, users, user_show, user_edit, user_delete

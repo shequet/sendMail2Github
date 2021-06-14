@@ -6,6 +6,9 @@ from .notification import Notification
 
 @csrf_exempt
 def webhook(request):
+    """
+    Webhook for GitHub events
+    """
 
     if request.method == 'POST':
         notification = Notification()

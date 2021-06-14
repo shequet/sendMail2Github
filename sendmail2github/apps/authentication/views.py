@@ -1,5 +1,5 @@
 """
-website app views document
+website authentication views document
 """
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
@@ -8,10 +8,7 @@ from django.shortcuts import render
 @login_required
 def profile(request):
     """
-    Display user profile of the site
-
-    Returns:
-       template : "registration/profile.html"
+    Display profile
     """
 
     return render(request, 'registration/profile.html')

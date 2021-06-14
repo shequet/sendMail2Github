@@ -1,7 +1,6 @@
 """
 Urls for the ticket app
 """
-
 from django.urls import path
 from .views import tickets, ticket_show
 

@@ -7,6 +7,10 @@ from .ticket_api import TicketApi
 
 
 def ticket_show(request, ticket_id):
+    """
+    Show ticket
+    """
+
     ticket_api = TicketApi()
     comment = request.POST.get('comment', '')
 
@@ -27,6 +31,10 @@ def ticket_show(request, ticket_id):
 
 
 def tickets(request):
+    """
+    Get all tickets
+    """
+
     state = 'open'
     if request.path == '/ticket/close':
         state = 'closed'
