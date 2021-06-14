@@ -5,8 +5,14 @@ from .models import MailTicket
 
 
 class Notification:
+    """
+    Class Notification
+    """
 
     def generate_message(self, action, json_data=None):
+        """
+        Generate message
+        """
 
         if action == 'new':
             return 'Bonjour,<br>' \
@@ -33,6 +39,9 @@ class Notification:
         return None
 
     def send(self, number, message):
+        """
+        Send message
+        """
 
         try:
             mail_ticket = MailTicket.objects.get(githubIssueNumber=number)

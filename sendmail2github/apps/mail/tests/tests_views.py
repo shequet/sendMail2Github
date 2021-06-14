@@ -1,17 +1,23 @@
 import json
-
 import requests
+import unittest.mock
 from django.test import TestCase
-from sendmail2github.apps.mail.views import webhook
 import httpretty
 from sendmail2github.apps.mail.models import MailTicket
-import unittest.mock
+from sendmail2github.apps.mail.views import webhook
 
 
 class TestMailViewTests(TestCase):
+    """
+    Class TestMailViewTests
+    """
 
     @httpretty.activate(verbose=False, allow_net_connect=False)
     def test_mail_webhook_created(self):
+        """
+        Test mail webhook created
+        """
+
         mail_ticket = MailTicket()
         mail_ticket.mailTitle = "Test"
         mail_ticket.mailMessageId = '123456'
@@ -49,6 +55,10 @@ class TestMailViewTests(TestCase):
 
     @httpretty.activate(verbose=False, allow_net_connect=False)
     def test_mail_webhook_labeled(self):
+        """
+        Test mail webhook labeled
+        """
+
         mail_ticket = MailTicket()
         mail_ticket.mailTitle = "Test"
         mail_ticket.mailMessageId = '123456'
@@ -87,6 +97,10 @@ class TestMailViewTests(TestCase):
 
     @httpretty.activate(verbose=False, allow_net_connect=False)
     def test_mail_webhook_closed(self):
+        """
+        Test mail webhook closed
+        """
+
         mail_ticket = MailTicket()
         mail_ticket.mailTitle = "Test"
         mail_ticket.mailMessageId = '123456'
@@ -124,6 +138,10 @@ class TestMailViewTests(TestCase):
 
     @httpretty.activate(verbose=False, allow_net_connect=False)
     def test_mail_webhook_none(self):
+        """
+        Test mail webhook none
+        """
+
         mail_ticket = MailTicket()
         mail_ticket.mailTitle = "Test"
         mail_ticket.mailMessageId = '123456'
@@ -160,6 +178,10 @@ class TestMailViewTests(TestCase):
 
     @httpretty.activate(verbose=False, allow_net_connect=False)
     def test_mail_webhook_get_is_none(self):
+        """
+        Test mail webhook get is none
+        """
+
         httpretty.register_uri(
             uri="http://127.0.0.1/",
             method='GET',

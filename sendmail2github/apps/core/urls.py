@@ -1,7 +1,6 @@
 """
-Urls for the website app
+Urls for the website core
 """
-
 from django.urls import path
 from . import views
 

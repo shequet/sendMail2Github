@@ -2,8 +2,15 @@ from django.test import TestCase
 from sendmail2github.apps.administration.forms import CustomUserCreationForm
 
 
-class AddUserFormTests(TestCase):
+class TestUserFormTests(TestCase):
+    """
+    Class TestUserFormTests
+    """
+
     def test_user_form(self):
+        """
+        Test user form
+        """
         form = CustomUserCreationForm()
 
         self.assertTrue(form.fields["email"])
@@ -12,6 +19,9 @@ class AddUserFormTests(TestCase):
         self.assertTrue(form.fields["password2"])
 
     def test_user_submit_form(self):
+        """
+        Test user submit form
+        """
         form = CustomUserCreationForm(data={'email': ''})
 
         self.assertEqual(form.errors["email"], ["Ce champ est obligatoire."])

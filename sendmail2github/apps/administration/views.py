@@ -1,5 +1,5 @@
 """
-website app views document
+website administration views document
 """
 from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import redirect, render
@@ -9,6 +9,10 @@ from .forms import CustomUserCreationForm
 
 @login_required
 def user_show(request, user_id):
+    """
+    Show user
+    """
+
     try:
         return render(
             request,
@@ -27,6 +31,10 @@ def user_show(request, user_id):
 
 @login_required
 def users(request):
+    """
+    Show all users
+    """
+
     all_users = User.objects.values()
     return render(
         request,
@@ -38,10 +46,7 @@ def users(request):
 @login_required
 def user_add(request):
     """
-    Display register user of the site
-
-    Returns:
-        template : "registration/register.html"
+    Add user
     """
 
     if request.method == "GET":
@@ -69,7 +74,7 @@ def user_add(request):
 @login_required
 def user_edit(request, user_id):
     """
-    Display register user of the site
+    Edit user
     """
 
     if request.method == "GET":
@@ -100,6 +105,10 @@ def user_edit(request, user_id):
 
 @permission_required('is_superuser')
 def user_delete(request, user_id):
+    """
+    Delete user
+    """
+
     all_users = User.objects.values()
     try:
         user = User.objects.get(id=user_id)

@@ -8,7 +8,7 @@ from sendmail2github.apps.mail.notification import Notification
 
 class Command(BaseCommand):
     """
-    Command to recovery of incoming emails
+    Class Command to recovery of incoming emails
     """
 
     help = 'Recovery of incoming emails'
