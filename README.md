@@ -1,5 +1,8 @@
 # sendMail2Github
 
+### Démo en ligne sur herokuapp
+https://sendmail2github.herokuapp.com/
+
 ### Installation
 
 Après avoir créé un virtual env, installez les dépendances via le requirements.txt
@@ -12,21 +15,21 @@ pip install -r requirements.txt
 
 | Nom  | Exemple  | Description  |
 |---|---|---|
-| DJANGO_SECRET_KEY |   | Clé secrète pour Django  |
+| DJANGO_SECRET_KEY |  ******** | Clé secrète pour Django  |
 | GITHUB_TOKEN | ghpxxxx  | Nom du token GitHub  |
 | GITHUB_REP | shequet/sendMail2Github  | Nom complet du repo Github  |
-| SENTRY_URL  |   |  URL de Sentry |
-| IMAP_HOST  |   |  Nom ou IP du serveur Imap |
-| IMAP_PORT  |   |  Numéro du port Imap |
-| IMAP_TLS  |   | Activer ou non le TLS (0, 1)  |
-| IMAP_USER  |   | Nom de l'utilisateur Imap  |
-| IMAP_PASSWORD  |   | Mot de passe de l'utilisateur Imap  |
-| SMTP_HOST  |   |  Nom ou IP du serveur SMTP |
-| SMTP_PORT  |   |  Numéro du port SMTP |
-| SMTP_SSL  |   | Activer ou non le SSL (0, 1)  |
-| SMTP_USER  |   | Nom de l'utilisateur SMTP  |
-| SMTP_PASSWORD  |   | Mot de passe de l'utilisateur SMTP  |
-| SMTP_FROM  |   | Adresse Mail de l'expéditeur  |
+| SENTRY_URL  | https://*******.ingest.sentry.io/123456  |  URL de Sentry |
+| IMAP_HOST  | imap.gmail.com  |  Nom ou IP du serveur Imap |
+| IMAP_PORT  |  993 |  Numéro du port Imap |
+| IMAP_TLS  |  0 | Activer ou non le TLS (0, 1)  |
+| IMAP_USER  |  assistanceocr@gmail.com | Nom de l'utilisateur Imap  |
+| IMAP_PASSWORD  |  ******** | Mot de passe de l'utilisateur Imap  |
+| SMTP_HOST  | smtp.gmail.com  |  Nom ou IP du serveur SMTP |
+| SMTP_PORT  | 465  |  Numéro du port SMTP |
+| SMTP_SSL  |  1 | Activer ou non le SSL (0, 1)  |
+| SMTP_USER  |  assistanceocr@gmail.com | Nom de l'utilisateur SMTP  |
+| SMTP_PASSWORD  | ********  | Mot de passe de l'utilisateur SMTP  |
+| SMTP_FROM  | assistanceocr@gmail.com  | Adresse Mail de l'expéditeur  |
 
 ### Configurer un Webhook sur le repo Github
 
@@ -58,12 +61,10 @@ coverage run --source='.' manage.py test sendmail2github
 
 Adapater l'exclusion de l'environnement virtuel  ``'venv/*'``
 ```shell
-coverage report --omit 'venv/*'
+coverage report
 ```
+![Coverage](doc/coverage.png)
 
-### Démo en ligne sur herokuapp
-
-https://sendmail2github.herokuapp.com/
 
 ### Accueil
 ![Accueil](doc/home.png)

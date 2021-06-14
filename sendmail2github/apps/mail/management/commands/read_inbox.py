@@ -31,8 +31,8 @@ class Command(BaseCommand):
                 settings.IMAP_PASSWORD,
                 initial_folder='INBOX',
         ) as mailbox:
-
             for msg in mailbox.fetch(AND(seen=False)):
+                print('!!!!!!!!!!!!! Fetch')
                 mid = None
                 if 'message-id' in msg.headers:
                     mid = msg.headers['message-id'][0]

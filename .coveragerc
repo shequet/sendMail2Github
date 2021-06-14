@@ -1,0 +1,8 @@
+[run]
+branch = True
+omit =
+    venv/*
+    manage.py
+    sendmail2github/wsgi.py
+    sendmail2github/asgi.py
+    sendmail2github/settings_travis.py
