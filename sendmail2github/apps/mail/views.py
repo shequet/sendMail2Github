@@ -1,7 +1,7 @@
 import json
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-import smtplib
+import smtplib, ssl
 from email.mime.text import MIMEText
 from django.conf import settings
 from .models import MailTicket
@@ -9,7 +9,6 @@ from .models import MailTicket
 
 def send_mail(github_issue_number, message):
 
-    print(send_mail)
     try:
         mail_ticket = MailTicket.objects.get(githubIssueNumber=github_issue_number)
 
@@ -18,12 +17,13 @@ def send_mail(github_issue_number, message):
         msg['From'] = settings.SMTP_FROM
         msg['To'] = mail_ticket.mailSenderAddress
         msg['Message-ID'] = mail_ticket.mailMessageId
+        context = ssl.create_default_context()
 
         if settings.SMTP_SSL == "1":
             server = smtplib.SMTP_SSL(host=settings.SMTP_HOST, port=settings.SMTP_PORT)
         else:
             server = smtplib.SMTP(host=settings.SMTP_HOST, port=settings.SMTP_PORT)
-
+        server.co
         server.ehlo()
         server.login(settings.SMTP_USER, settings.SMTP_PASSWORD)
         server.sendmail(settings.SMTP_FROM, [mail_ticket.mailSenderAddress, ], msg.as_string())
