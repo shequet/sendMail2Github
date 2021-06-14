@@ -175,7 +175,7 @@ SMTP_HOST = os.environ['SMTP_HOST']
 SMTP_USER = os.environ['SMTP_USER']
 SMTP_PASSWORD = os.environ['SMTP_PASSWORD']
 SMTP_PORT = os.environ['SMTP_PORT']
-SMTP_TLS = os.environ['SMTP_TLS']
+SMTP_SSL = os.environ['SMTP_SSL']
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
