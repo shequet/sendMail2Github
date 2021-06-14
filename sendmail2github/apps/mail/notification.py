@@ -6,7 +6,7 @@ from .models import MailTicket
 
 class Notification:
 
-    def generate_message(self, action, json_data):
+    def generate_message(self, action, json_data=None):
 
         if action == 'new':
             return 'Bonjour,<br>' \
