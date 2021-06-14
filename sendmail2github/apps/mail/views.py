@@ -17,13 +17,12 @@ def send_mail(github_issue_number, message):
         msg['From'] = settings.SMTP_FROM
         msg['To'] = mail_ticket.mailSenderAddress
         msg['Message-ID'] = mail_ticket.mailMessageId
-        context = ssl.create_default_context()
 
         if settings.SMTP_SSL == "1":
             server = smtplib.SMTP_SSL(host=settings.SMTP_HOST, port=settings.SMTP_PORT)
         else:
             server = smtplib.SMTP(host=settings.SMTP_HOST, port=settings.SMTP_PORT)
-        server.co
+
         server.ehlo()
         server.login(settings.SMTP_USER, settings.SMTP_PASSWORD)
         server.sendmail(settings.SMTP_FROM, [mail_ticket.mailSenderAddress, ], msg.as_string())
