@@ -9,20 +9,25 @@ from .models import MailTicket
 
 def send_mail(github_issue_number, message):
 
-    mail_ticket = MailTicket.objects.get(githubIssueNumber=github_issue_number)
+    try:
+        mail_ticket = MailTicket.objects.get(githubIssueNumber=github_issue_number)
 
-    if mail_ticket is not None:
         msg = MIMEText(message, 'html', 'utf-8')
         msg['Subject'] = mail_ticket.mailTitle
         msg['From'] = settings.SMTP_FROM
         msg['To'] = mail_ticket.mailSenderAddress
         msg['Message-ID'] = mail_ticket.mailMessageId
 
-        server = smtplib.SMTP(host=settings.SMTP_HOST, port=587)
-        server.starttls()
+        server = smtplib.SMTP(host=settings.SMTP_HOST, port=settings.SMTP_PORT)
+
+        if settings.SMTP_TLS == 1:
+            server.starttls()
+
         server.ehlo()
         server.login(settings.SMTP_USER, settings.SMTP_PASSWORD)
         server.sendmail(settings.SMTP_FROM, [mail_ticket.mailSenderAddress, ], msg.as_string())
+    except MailTicket.DoesNotExist:
+        pass
 
 
 @csrf_exempt
