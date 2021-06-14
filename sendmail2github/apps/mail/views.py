@@ -19,7 +19,7 @@ def webhook(request):
         message = notification.generate_message(action, json_data)
 
         if message is not None:
-            notification.send(ticket, message)
+            notification.send(ticket['number'], message)
 
         return JsonResponse(ticket)
 
