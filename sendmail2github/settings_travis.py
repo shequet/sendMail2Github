@@ -167,6 +167,6 @@ SMTP_HOST = ''
 SMTP_USER = ''
 SMTP_PASSWORD = ''
 SMTP_PORT = ''
-SMTP_TLS = ''
+SMTP_SSL = ''
 SMTP_FROM = ''
 

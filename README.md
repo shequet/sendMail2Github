@@ -23,7 +23,7 @@ pip install -r requirements.txt
 | IMAP_PASSWORD  |   | Mot de passe de l'utilisateur Imap  |
 | SMTP_HOST  |   |  Nom ou IP du serveur SMTP |
 | SMTP_PORT  |   |  Numéro du port SMTP |
-| SMTP_TLS  |   | Activer ou non le TLS (0, 1)  |
+| SMTP_SSL  |   | Activer ou non le SSL (0, 1)  |
 | SMTP_USER  |   | Nom de l'utilisateur SMTP  |
 | SMTP_PASSWORD  |   | Mot de passe de l'utilisateur SMTP  |
 | SMTP_FROM  |   | Adresse Mail de l'expéditeur  |
