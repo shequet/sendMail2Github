@@ -1,4 +1,4 @@
-import smtplib, ssl
+import smtplib
 from email.mime.text import MIMEText
 from django.conf import settings
 from .models import MailTicket
@@ -7,13 +7,18 @@ from .models import MailTicket
 class Notification:
 
     def generate_message(self, action, json_data):
-        message = None
-        if action == 'created':
-            message = 'Bonjour,<br>un commentaire a été ajouté : <hr>{comment}'.format(
+
+        if action == 'new':
+            return 'Bonjour,<br>' \
+                      'Nous avons bien pris en compte votre demande<br>' \
+                      'Cordialement,<br>' \
+                      'Le service support'
+        elif action == 'created':
+            return 'Bonjour,<br>un commentaire a été ajouté : <hr>{comment}'.format(
                 comment=json_data['comment']['body'])
 
         elif action == 'labeled':
-            message = 'Bonjour,<br>Votre ticket {number} à changé d\'état <b>{stat}</b>.'.format(
+            return 'Bonjour,<br>Votre ticket {number} à changé d\'état <b>{stat}</b>.'.format(
                 number=json_data['issue']['number'],
                 stat=json_data['label']['name'])
 
@@ -21,16 +26,16 @@ class Notification:
             comment = ''
             if 'comment' in json_data:
                 comment = json_data['comment']['body']
-            message = 'Bonjour,<br>Votre ticket {number} est <b>terminé</b><hr>{comment}.'.format(
+            return 'Bonjour,<br>Votre ticket {number} est <b>terminé</b><hr>{comment}.'.format(
                 number=json_data['issue']['number'],
                 comment=comment)
 
-        return message
+        return None
 
-    def send(self, ticket, message):
+    def send(self, number, message):
 
         try:
-            mail_ticket = MailTicket.objects.get(githubIssueNumber=ticket['number'])
+            mail_ticket = MailTicket.objects.get(githubIssueNumber=number)
 
             msg = MIMEText(message, 'html', 'utf-8')
             msg['Subject'] = mail_ticket.mailTitle

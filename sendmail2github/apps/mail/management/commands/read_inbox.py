@@ -3,6 +3,7 @@ from django.conf import settings
 from imap_tools import MailBox, AND
 from sendmail2github.apps.ticket.ticket_api import TicketApi
 from sendmail2github.apps.mail.models import MailTicket
+from sendmail2github.apps.mail.notification import Notification
 
 
 class Command(BaseCommand):
@@ -18,6 +19,7 @@ class Command(BaseCommand):
         """
 
         ticket_api = TicketApi()
+        notification = Notification()
         ticket_api.get_or_create_label_status_in_progress()
         label_new = ticket_api.get_or_create_label_status_new()
 
@@ -61,3 +63,5 @@ class Command(BaseCommand):
                     mail_ticket.mailMessageId = mid
                     mail_ticket.mailSenderAddress = msg.from_
                     mail_ticket.save()
+
+                    notification.send(new_ticket.number, notification.generate_message('new'))
