@@ -28,3 +28,11 @@ class TestAuthentificationView(TestCase):
         response = self.client.get('/account/profile/')
 
         self.assertEqual(response.status_code, 200)
+
+    def test_account_logout(self):
+        self.client.login(
+            username=self.username,
+            password=self.password
+        )
+        response = self.client.get('/account/logout/')
+        self.assertContains(response, 'Cliquez ici pour vous reconnecter')

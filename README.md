@@ -51,7 +51,7 @@ python manage.py runserver
 
 Adapater l'exclusion de l'environnement virtuel  ``'venv/*'``
 ```shell
-coverage report --omit 'venv/*' manage.py test
+coverage run --source='.' manage.py test sendmail2github
 ```
 
 ### Valider la couverture des tests
@@ -71,10 +71,10 @@ https://sendmail2github.herokuapp.com/
 ### Connexion
 ![Connexion](doc/connexion.png)
 
-### Ticket : en cours
+### Tickets : en cours
 ![Ticket en cours](doc/ticket_en_cours.png)
 
-### Ticket : terminé
+### Tickets : terminés
 ![Ticket terminé](doc/ticket_termine.png)
 
 ### Ticket : ajouter un commentaire

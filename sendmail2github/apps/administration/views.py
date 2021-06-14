@@ -1,11 +1,8 @@
 """
 website app views document
 """
-from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required, permission_required
-from django.http import HttpResponse
 from django.shortcuts import redirect, render
-from django.urls import reverse
 from django.contrib.auth.models import User
 from .forms import CustomUserCreationForm
 
@@ -27,14 +24,15 @@ def user_show(request, user_id):
                 'message': "L'utilisateur n'existe pas"
             })
 
+
 @login_required
 def users(request):
     all_users = User.objects.values()
     return render(
-            request,
-            'users.html', {
-                'users': all_users
-            })
+        request,
+        'users.html', {
+            'users': all_users
+        })
 
 
 @login_required

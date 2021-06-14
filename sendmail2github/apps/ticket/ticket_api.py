@@ -4,8 +4,12 @@ from django.conf import settings
 
 class TicketApi:
 
-    def __init__(self):
-        self.git_hub = Github(base_url="https://api.github.com", login_or_token=settings.GITHUB_TOKEN)
+    def __init__(self, git_hub=None):
+        if git_hub is not None:
+            self.git_hub = git_hub
+        else:
+            self.git_hub = Github(base_url="https://api.github.com", login_or_token=settings.GITHUB_TOKEN)
+
         self.repo = self.git_hub.get_repo(settings.GITHUB_REPO)
 
     def get_label(self, name):
@@ -55,6 +59,7 @@ class TicketApi:
         user_labels = []
         labels = self.repo.get_labels()
 
+        print(labels)
         for label in labels:
             if filter_name in label.name:
                 user_labels.append(label)
@@ -87,8 +92,8 @@ class TicketApi:
 
         }
 
-    def get_ticket(self, id):
-        return self.repo.get_issue(number=id)
+    def get_ticket(self, number):
+        return self.repo.get_issue(number=number)
 
-    def create_comment(self, id, comment):
-        return self.repo.get_issue(number=id).create_comment(body=comment)
+    def create_comment(self, number, comment):
+        return self.repo.get_issue(number=number).create_comment(body=comment)

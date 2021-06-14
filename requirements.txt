@@ -7,3 +7,6 @@ gunicorn==20.0.4
 coverage==5.4
 PyGithub==1.54.1
 imap-tools==0.41.0
+httpretty==1.1.3
+requests~=2.25.1
+mock~=4.0.3

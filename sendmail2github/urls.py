@@ -27,6 +27,4 @@ urlpatterns = [
     url('mail/', include('sendmail2github.apps.mail.urls')),
 ]
 
-print(settings.STATIC_URL)
-print(settings.STATIC_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

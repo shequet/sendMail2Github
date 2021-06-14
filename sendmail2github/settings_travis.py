@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
-import django_heroku
 from pathlib import Path
 
 
@@ -169,3 +168,5 @@ SMTP_USER = ''
 SMTP_PASSWORD = ''
 SMTP_PORT = ''
 SMTP_TLS = ''
+SMTP_FROM = ''
+
