@@ -16,7 +16,7 @@ from sentry_sdk.integrations.django import DjangoIntegration
 from pathlib import Path
 
 sentry_sdk.init(
-    dsn=os.environ['SENTRY_URL'],
+    dsn=os.getenv('SENTRY_URL', ''),
     integrations=[DjangoIntegration()],
     traces_sample_rate=1.0,
     send_default_pii=True
@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', '123456789azerty')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -160,22 +160,22 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-GITHUB_TOKEN = os.environ['GITHUB_TOKEN']
-GITHUB_REPO = os.environ['GITHUB_REPO']
+GITHUB_TOKEN = os.getenv('GITHUB_TOKEN', '')
+GITHUB_REPO = os.getenv('GITHUB_REPO', '')
 
-IMAP_HOST = os.environ['IMAP_HOST']
-IMAP_USER = os.environ['IMAP_USER']
-IMAP_PASSWORD = os.environ['IMAP_PASSWORD']
-IMAP_PORT = os.environ['IMAP_PORT']
-IMAP_TLS = os.environ['IMAP_TLS']
+IMAP_HOST = os.getenv('IMAP_HOST', '')
+IMAP_USER = os.getenv('IMAP_USER', '')
+IMAP_PASSWORD = os.getenv('IMAP_PASSWORD', '')
+IMAP_PORT = os.getenv('IMAP_PORT', '')
+IMAP_TLS = os.getenv('IMAP_TLS', '')
 
-SMTP_FROM = os.environ['SMTP_FROM']
+SMTP_FROM = os.getenv('SMTP_FROM', '')
 
-SMTP_HOST = os.environ['SMTP_HOST']
-SMTP_USER = os.environ['SMTP_USER']
-SMTP_PASSWORD = os.environ['SMTP_PASSWORD']
-SMTP_PORT = os.environ['SMTP_PORT']
-SMTP_SSL = os.environ['SMTP_SSL']
+SMTP_HOST = os.getenv('SMTP_HOST', '')
+SMTP_USER = os.getenv('SMTP_USER', '')
+SMTP_PASSWORD = os.getenv('SMTP_PASSWORD', '')
+SMTP_PORT = os.getenv('SMTP_PORT', '')
+SMTP_SSL = os.getenv('SMTP_SSL', '')
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
