@@ -9,7 +9,7 @@ class Notification:
     def generate_message(self, action, json_data):
         message = None
         if action == 'created':
-            message['message'] = 'Bonjour,<br>un commentaire a étét ajouté : <hr>{comment}'.format(
+            message = 'Bonjour,<br>un commentaire a été ajouté : <hr>{comment}'.format(
                 comment=json_data['comment']['body'])
 
         elif action == 'labeled':
