@@ -40,12 +40,11 @@ class Command(BaseCommand):
                 else:
                     body = msg.text
 
-                mail_ticket = MailTicket.objects.get(mailMessageId=mid)
-                if mail_ticket is not None:
+                try:
+                    mail_ticket = MailTicket.objects.get(mailMessageId=mid)
                     ticket = ticket_api.get_ticket(mail_ticket.githubIssueNumber)
                     ticket.create_comment(body)
-                    continue
-                else:
+                except MailTicket.DoesNotExist:
                     label_mail = ticket_api.get_or_create_label_user(mail=msg.from_)
                     new_ticket = ticket_api.create_issue(
                         title=msg.subject,

@@ -168,3 +168,5 @@ SMTP_USER = ''
 SMTP_PASSWORD = ''
 SMTP_PORT = ''
 SMTP_TLS = ''
+SMTP_FROM = ''
+
