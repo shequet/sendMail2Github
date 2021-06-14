@@ -21,10 +21,13 @@ class Command(BaseCommand):
         ticket_api.get_or_create_label_status_in_progress()
         label_new = ticket_api.get_or_create_label_status_new()
 
-        with MailBox(settings.IMAP_HOST).login(
+        with MailBox(
+                host=settings.IMAP_HOST,
+                port=settings.IMAP_PORT
+        ).login(
                 settings.IMAP_USER,
                 settings.IMAP_PASSWORD,
-                initial_folder='INBOX'
+                initial_folder='INBOX',
         ) as mailbox:
 
             for msg in mailbox.fetch(AND(seen=False)):
