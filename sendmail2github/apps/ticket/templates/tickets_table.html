@@ -5,14 +5,16 @@
         <tr>
           <th scope="col"></th>
           <th scope="col"></th>
-            <th scope="col">
-            <select class="form-control" name="status"  onchange="this.form.submit()">
-                <option value="">-- Tout --</option>
-              {% for stat in tickets.status %}
-                <option value="{{ stat.name }}" {%if filters.status == stat.name %}selected{% endif %}>{{ stat.name|cut:"Status: " }}</option>
-              {% endfor %}
-            </select>
-          </th>
+           {%if request.path != '/ticket/close' %}
+                <th scope="col">
+                <select class="form-control" name="status"  onchange="this.form.submit()">
+                    <option value="">-- Tout --</option>
+                  {% for stat in tickets.status %}
+                    <option value="{{ stat.name }}" {%if filters.status == stat.name %}selected{% endif %}>{{ stat.name|cut:"Status: " }}</option>
+                  {% endfor %}
+                </select>
+              </th>
+            {% endif %}
             <th scope="col">
             <select class="form-control" name="user"  onchange="this.form.submit()">
                 <option value="all">-- Tout --</option>
@@ -41,6 +43,7 @@
                       <img class="avatar rounded-circle" src="{{ assignee.avatar_url }}" title="{{ assignee.name }}" />
                     {% endfor %}
                 </td>
+                {%if request.path != '/ticket/close' %}
                 <td class="align-middle">
                     {% for label in issue.labels %}
                         {% if 'Status: ' in label.name %}
@@ -48,6 +51,7 @@
                         {% endif %}
                     {% endfor %}
                 </td>
+                 {% endif %}
                 <td class="align-middle">
                     {% for label in issue.labels %}
                         {% if 'User: ' in label.name %}
